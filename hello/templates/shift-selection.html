@@ -16,7 +16,7 @@
 <td align=center>Sun</td>
 </tr>
 <tr>
-<form method=post onSubmit=""> {% csrf_token %}
+<form method=post onSubmit="" action="set-shifts.html"> {% csrf_token %}
 {% for day in weekdays %}
 <td valign="top">
        {% with shifts=shifts_by_day|lookup:day %}
@@ -27,8 +27,10 @@
 </td>
 {% endfor %}
 <p>
-<input type="hidden" name="redirect" value="set-shifts.html">
-<input type="submit" action="set-shifts.html" target="_blank" method="post"> <!-- TODO: form target-->
+<td>
+<input type="hidden" name="redirect" value="set-shifts.html"><br>
+<input type="submit"> <!-- TODO: form target-->
+</td>
 </form>
 </table>
 
