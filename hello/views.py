@@ -18,7 +18,7 @@
 # nail down the terminology
 
 # try keepasking.io: how it's self-sustained
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import Template, loader
 from django.conf import settings
 import requests
