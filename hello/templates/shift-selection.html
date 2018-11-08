@@ -16,7 +16,7 @@
 <td align=center>Sun</td>
 </tr>
 <tr>
-<form method=post onSubmit="" action="set-shifts.html"> {% csrf_token %}
+<form method=post action="set-shifts.html"> {% csrf_token %}
 {% for day in weekdays %}
 <td valign="top">
        {% with shifts=shifts_by_day|lookup:day %}
