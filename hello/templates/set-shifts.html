@@ -27,7 +27,9 @@
 {% endfor %}
 </tr>
 </table>
-{{ testing }}
+{% for k in testing %}
+{{ testing.k }}
+{% endfor %}
 <p>
 
 </html>
