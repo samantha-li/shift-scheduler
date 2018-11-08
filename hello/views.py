@@ -117,17 +117,17 @@ def set_shifts(request):
     template = loader.get_template('set-shifts.html')
     context = { "shifts_by_day": myshifts,
                 "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                "testing": ""
+                "testing": defaultdict(list)
               }
     for s in indexed_shifts:
         checked = request.POST.get(i)
-        # context["testing"] = checked
+        context["testing"] = checked
         if checked:
             myshifts[s["day"]].append((s["start_time"], s["end_time"]))
-            context["testing"] = checked
             return HttpResponse(template.render(context, request))
             # TODO: Add to user's shifts here
-    return HttpResponseRedirect('/')
+    return HttpResponse(template.render(context, request))
+    # return HttpResponseRedirect('/')
 
 def select(request):
 
