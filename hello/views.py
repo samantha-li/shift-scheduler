@@ -79,7 +79,7 @@ for s in pick_shifts:
 
 def index(request):
     # return HttpResponse('Hello from Python!')
-    template = loader.get_template('/calendar.html')
+    template = loader.get_template('calendar.html')
     calMatrix = calendar.monthcalendar(year, month)
     shifts_this_month = shifts[year][month]
     context = {"title": "{:s} {:d}".format(month_mapping[month], year),
