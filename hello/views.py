@@ -78,15 +78,6 @@ for s in pick_shifts:
     indexed_shifts.append(s)
     i += 1
 
-
-
-# shifts = {"2018":
-#             {"11":
-#                 {"2": [(19, 2), (21, 2)]}
-#             }
-#         }
-
-# Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
     template = loader.get_template('calendar.html')
@@ -118,14 +109,13 @@ def set_shifts(request):
     template = loader.get_template('set-shifts.html')
     context = { "shifts_by_day": myshifts,
                 "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                "testing": testing
+                # "testing": testing
               }
     for s in indexed_shifts:
         checked = request.POST.get(str(i))
-        testing.append(checked)
+        # testing.append(checked)
         if checked:
             myshifts[s["day"]].append((s["start_time"], s["end_time"]))
-            return HttpResponse(template.render(context, request))
             # TODO: Add to user's shifts here
         i += 1
     return HttpResponse(template.render(context, request))
