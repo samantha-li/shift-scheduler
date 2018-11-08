@@ -121,7 +121,7 @@ def set_shifts(request):
                 "testing": testing
               }
     for s in indexed_shifts:
-        checked = request.POST.get(i)
+        checked = request.POST.get("forms")
         testing.append(checked)
         if checked:
             myshifts[s["day"]].append((s["start_time"], s["end_time"]))
