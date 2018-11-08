@@ -33,7 +33,6 @@ import django
 django.setup()
 
 
-
 # settings.configure() # We have to do this to use django templates standalone - see
 # http://stackoverflow.com/questions/98135/how-do-i-use-django-templates-without-the-rest-of-django
 
