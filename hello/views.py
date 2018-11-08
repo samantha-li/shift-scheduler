@@ -122,11 +122,12 @@ def set_shifts(request):
               }
     for s in indexed_shifts:
         checked = request.POST.get(i)
-        testing[s] = checked
+        testing[i] = checked
         if checked:
             myshifts[s["day"]].append((s["start_time"], s["end_time"]))
             return HttpResponse(template.render(context, request))
             # TODO: Add to user's shifts here
+        i += 1
     return HttpResponse(template.render(context, request))
     # return HttpResponseRedirect('/')
 
