@@ -119,7 +119,7 @@ def set_shifts(request):
                 "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
               }
     for s in indexed_shifts:
-        checked = request.forms.get(i)
+        checked = request.POST.get(i)
         if checked:
             myshifts[s["day"]].append((s["start_time"], s["end_time"]))
             return HttpResponse(template.render(context, request))
