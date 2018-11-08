@@ -1,0 +1,41 @@
+{% load filters %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="/static/css/landing.css">
+</head>
+
+<html>
+<table class="calendar" border=3 cellspacing=5 cellpadding=10>
+<tr>
+<td colspan="7" align=center><b>{{ title }}</b></td>
+</tr>
+
+<tr>
+<td align=center>Mon</td>
+<td align=center>Tue</td>
+<td align=center>Wed</td>
+<td align=center>Thu</td>
+<td align=center>Fri</td>
+<td align=center>Sat</td>
+<td align=center>Sun</td>
+</tr>
+{% for week in monthCal %}
+<tr>
+   {% for day in week %}
+      {% if day != 0 %}
+         <td class="day" valign="top">{{ day }}
+            {% with dayShifts=shifts|lookup:day %}
+            {% for shift in dayShifts %}
+               <p>
+               <a href="select.html">{{ shift }}</a>
+            {% endfor %}
+            {% endwith %}
+         </td>
+      {% else %}
+         <td align=center></td>
+      {% endif %}
+   {% endfor %}
+</tr>
+{% endfor %}
+
+</html>
