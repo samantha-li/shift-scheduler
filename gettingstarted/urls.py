@@ -14,7 +14,8 @@ import hello.views
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     path('accounts/', include('accounts.urls')), # new
-    # path('accounts/login/', auth_views.LoginView.as_view()),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    path('accounts/logout/', auth_views.LoginView.as_view(), name='logout'),
     url(r'^db', hello.views.db, name='db'),
     url(r'^select', hello.views.select, name='select'),
     url(r'^shift-selection', hello.views.select_shifts, name='shift-selection'),
