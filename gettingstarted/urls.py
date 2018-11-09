@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^shift-selection', hello.views.select_shifts, name='shift-selection'),
     url(r'^set-shifts', hello.views.set_shifts, name='set-shifts'),
     path('admin/', admin.site.urls),
-    # url(r"^account/", include("account.urls")),
+    url(r"^account/", include("account.urls")),
 ]
