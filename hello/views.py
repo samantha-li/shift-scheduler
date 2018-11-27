@@ -27,7 +27,11 @@ import calendar
 from collections import defaultdict
 import yaml
 
+<<<<<<< HEAD
 from .models import Greeting, Shift, Schedule
+=======
+from .models import Greeting
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
 
 import django
 django.setup()
@@ -68,6 +72,7 @@ pick_shifts = yaml.load("""
 - {day: Sunday, start_time: '20:00', end_time: '22:00'}
 - {day: Sunday, start_time: '21:00', end_time: '23:00'}
 """)
+<<<<<<< HEAD
 try:
     schedule = Schedule.objects.get(user='admin')
 except Schedule.DoesNotExist:
@@ -81,10 +86,13 @@ for s in pick_shifts:
     except Shift.DoesNotExist:
         tmp = Shift.objects.create(weekday=s["day"], start_time=s["start_time"], end_time=s["end_time"])
     schedule.shifts.add(tmp)
+=======
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
 
 shifts_by_day = defaultdict(list)
 indexed_shifts = []
 i = 0
+<<<<<<< HEAD
 for s in schedule.shifts.all():
     shifts_by_day[s.weekday].append((i, "{:s}-{:s}".format(s.start_time, s.end_time)))
     indexed_shifts.append({"weekday": s.weekday, "start_time": s.start_time, "end_time":s.end_time})
@@ -93,23 +101,38 @@ for s in schedule.shifts.all():
 #     shifts_by_day[s["day"]].append((i, "{:s}-{:s}".format(s["start_time"], s["end_time"])))
 #     indexed_shifts.append(s)
 #     i += 1
+=======
+for s in pick_shifts:
+    shifts_by_day[s["day"]].append((i, "{:s}-{:s}".format(s["start_time"], s["end_time"])))
+    indexed_shifts.append(s)
+    i += 1
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
 
 def index(request):
     # return HttpResponse('Hello from Python!')
     template = loader.get_template('calendar.html')
     calMatrix = calendar.monthcalendar(year, month)
     shifts_this_month = shifts[year][month]
+<<<<<<< HEAD
     current_user = request.user
     context = {"title": "{:s} {:d}".format(month_mapping[month], year),
                 "monthCal": calMatrix,
                 "shifts": shifts_this_month,
                 "user_id": current_user
+=======
+    context = {"title": "{:s} {:d}".format(month_mapping[month], year),
+                "monthCal": calMatrix,
+                "shifts": shifts_this_month
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
               }
     return HttpResponse(template.render(context, request))
     # return render(request, 'index.html')
 
 def select_shifts(request):
+<<<<<<< HEAD
     current_user = request.user
+=======
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
     if request.method == "GET":
         params = request.GET
     else:
@@ -117,13 +140,18 @@ def select_shifts(request):
     template = loader.get_template('shift-selection.html')
     context = { "shifts_by_day": shifts_by_day,
                 "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+<<<<<<< HEAD
                 "params": params,
                 "user_id": current_user,
+=======
+                "params": params
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
               }
     return HttpResponse(template.render(context, request))
 
 def set_shifts(request):
     myshifts = defaultdict(list)
+<<<<<<< HEAD
     current_user = request.user
     try:
         user_schedule = Schedule.objects.get(user=current_user)
@@ -132,10 +160,14 @@ def set_shifts(request):
         user_schedule = Schedule.objects.create(user=current_user)
         # user_schedule.shifts.set([])
         # myshifts["Monday"].append((str(len(Schedule.objects.get(user="admin").shifts.all())), "0"))
+=======
+    testing = []
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
     i = 0
     template = loader.get_template('set-shifts.html')
     context = { "shifts_by_day": myshifts,
                 "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+<<<<<<< HEAD
               }
     for s in indexed_shifts:
         checked = request.POST.get(str(i))
@@ -151,6 +183,17 @@ def set_shifts(request):
         i += 1
     for s in user_schedule.shifts.all():
         myshifts[s.weekday].append((s.start_time, s.end_time))
+=======
+                # "testing": testing
+              }
+    for s in indexed_shifts:
+        checked = request.POST.get(str(i))
+        # testing.append(checked)
+        if checked:
+            myshifts[s["day"]].append((s["start_time"], s["end_time"]))
+            # TODO: Add to user's shifts here
+        i += 1
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
     return HttpResponse(template.render(context, request))
     # return HttpResponseRedirect('/')
 

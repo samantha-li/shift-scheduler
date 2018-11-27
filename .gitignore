@@ -3,4 +3,7 @@ venv
 staticfiles
 .env
 db.sqlite3
+<<<<<<< HEAD
 getting-started/*
+=======
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780

@@ -9,9 +9,12 @@ class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
+<<<<<<< HEAD
 
 # testing0
 # abx^2cucu
 
 # testing1
 # db
+=======
+>>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
