@@ -12,10 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
-<<<<<<< HEAD
 import dj_database_url
-=======
->>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
 
 SITE_ID = 1
 
@@ -87,7 +84,6 @@ WSGI_APPLICATION = 'gettingstarted.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-<<<<<<< HEAD
 DATABASE_URL = "postgres://ajsqwkbjwdtsnp:1b48258dd84a0009ce798290ea882c060967435e5cc51f87adbf9299dc57b4b7@ec2-54-225-110-156.compute-1.amazonaws.com:5432/dfbkg08aqof4rn"
 
 DATABASES = {
@@ -96,16 +92,6 @@ DATABASES = {
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
     'default': dj_database_url.config(default=DATABASE_URL),
-=======
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
->>>>>>> 8bf5e16791af5989c93baf0971df91b517c89780
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
