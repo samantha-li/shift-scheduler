@@ -84,15 +84,20 @@ WSGI_APPLICATION = 'gettingstarted.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-# DATABASE_URL = "postgres://ajsqwkbjwdtsnp:1b48258dd84a0009ce798290ea882c060967435e5cc51f87adbf9299dc57b4b7@ec2-54-225-110-156.compute-1.amazonaws.com:5432/dfbkg08aqof4rn"
+DATABASE_URL = "postgres://gygounbmhhucsa:8bdb57fd5adfc6266663a92ffb15d50aa6ea1ce37f50d8415438b562db3bb505@ec2-54-83-8-246.compute-1.amazonaws.com:5432/dftolb73as97al"
 
 # https://medium.com/agatha-codes/painless-postgresql-django-d4f03364989
 DATABASES = {
     # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'shift_scheduler',
+    #     'USER': 'spli',
+    #     'PASSWORD': 'testing',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
     # }
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', '')),
+    # 'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', '')),
+    'default': dj_database_url.config(default=DATABASE_URL),
     }
 
 # Password validation
